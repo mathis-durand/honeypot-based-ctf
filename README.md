@@ -2,6 +2,8 @@
 
 This challenge collects logs. See Privacy Policy.
 
+![[images/honeydrone.jpg]]
+
 You’ve gained access to a restricted network via a backdoored SSH service. 
 Your task is to navigate this environment and identify the real target: a vulnerable SSH server ripe for exploitation. However, Honeypots are scattered throughout, designed to mislead and trap you. 
 
@@ -10,7 +12,7 @@ Distinguish between legitimate targets and deceptive traps.
 Once you’ve identified the correct server, exploit its weaknesses, gain access, and escalate your privileges to root. 
 Good luck, and be cautious!
 
-The challenge may take a few minutes to setup.
+The challenge may take a few minutes to set up.
 
 
 # Challenge host guide
