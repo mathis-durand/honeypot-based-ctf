@@ -13,80 +13,25 @@ Good luck, and be cautious!
 The challenge may take a few minutes to setup.
 
 
-# Users
+# Challenge host guide
 
-## Player's users
+This challenge has been made for CTFd.
 
-nobody1 : password -- player connection
-
-ot-user : p@ssword -- user we want to get the flag
-
-
-# Services
-## Docker in Docker
-
-## SSH
-
-## Conpot
-https://hub.docker.com/r/honeynet/conpot
-## Cowrie
-
-## Kippo 
-
-
-# Dokerfiles
-
-## dind
-Build the docker image
+Build the challenge:
 ```sh
 sudo docker build -t dind_custom deploy/
 ```
-Run the Docker container
+Run the Docker container on the port `PORT`:
 ```sh
-sudo docker run --name challenge --privileged -p 2222:2222 dind_custom
+sudo docker run --name challenge --privileged -p PORT:2222 dind_custom
 ```
-One command
+Connect as root to the challenge (debug)
 ```sh
-sudo docker build -t dind_custom deploy/ && sudo docker run --name challenge --privileged -p 2222:2222 dind_custom
-```
-Connect as root
-```sh
-sudo docker exec -it challenge /bin/sh
+sudo docker exec -it challenge /bin/bash
 ```
 
-## DinD config (automated)
+# Player guide
 
-Create Network
-```sh
-sudo docker network create --subnet=172.20.0.0/16 --gateway=172.20.0.1 mynetwork
-```
-Create Shared Volume
-```sh
-docker volume create honeypot_logs_volume
-```
+Use `ssh` to connect to the Docker container port.
 
-## ssh
-
-SSH directory
-```bash
-cd ssh
-```
-Build the docker image
-```bash
-docker build -t X --build-arg SSH_USER=user --build-arg SSH_PASS=ilovessh .
-```
-Run the Docker container
-```sh
-docker run --name X_c --net mynetwork --ip 172.20.0.1X X
-```
-Connect as root
-```sh
-docker exec -it X_c /bin/sh
-```
-
-
-## kippo
-
-## cowrie
-
-## conpot
+nobody1 : password -- player connection
