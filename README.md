@@ -34,4 +34,6 @@ sudo docker exec -it challenge /bin/bash
 
 Use `ssh` to connect to the Docker container port.
 
-nobody1 : password -- player connection
+```
+nobody1 : password
+```
