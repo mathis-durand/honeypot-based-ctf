@@ -215,6 +215,7 @@ def analyze_logs(container:int):
     if len(logs) > 5:
         logs = logs[-5:]
     for log in logs:
+        print("Analyzing: " + log)
         for pattern in suspicious_patterns:
             if re.search(pattern, log, re.IGNORECASE):
                 print(f"ALARM: Suspicious command detected in "+str(container)+": "+log)
@@ -224,7 +225,7 @@ def analyze_logs(container:int):
             print(f"ALARM: Suspicious command detected in "+str(container)+": "+log)
             alarm()
             return 1
-        return 0
+    return 0
                
 def check_logs():
     for container in range(-1,NB_CONTAINERS):
@@ -251,3 +252,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
