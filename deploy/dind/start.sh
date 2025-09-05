@@ -46,7 +46,7 @@ fi
 #chown nobody1:nobody1 /jail/home/nobody1/.ash_history
 
 # log folders
-mkdir /app/dind/logs -r
+mkdir /app/dind/logs
 echo 0 > /app/dind/.gen
 
 # Build images
