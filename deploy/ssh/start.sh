@@ -68,6 +68,7 @@ if [ $SSH_TYPE -ne 1 ]; then
   echo "while True:" > /app/update.py
   echo "    pass" >> /app/update.py
   python3 /app/update.py &
+  chmod 700 /app/update.py
 else
   echo "No Real Scripts"
 fi
@@ -177,3 +178,4 @@ fi
 
 # Keep the container running
 tail -f /dev/null
+
