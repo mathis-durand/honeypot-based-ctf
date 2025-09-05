@@ -7,6 +7,7 @@ def up_lobby():
   cmd = "docker run"
   cmd+= " -v /logs/-1/:/logs"
   cmd+= " -d"
+  cmd+= " -hostname bastion"
   cmd+= " --name lobby_c"
   cmd+= " --net honeynet"
   cmd+= " --ip 10.0.0.5"
@@ -17,3 +18,4 @@ def up_lobby():
 
 
 up_lobby()
+
