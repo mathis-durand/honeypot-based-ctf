@@ -47,7 +47,7 @@ def up_ssh(type:int, ip:str):
   cmd = "docker run"
   cmd+= " -v /logs/" + str(type) + "/:/logs"
   cmd+= " -d"
-  cmd+= " -h" + "10.0.0.1"+str(type)
+  cmd+= " -hostname " + ip
   cmd+= " --name ssh" + str(type) + "_c"
   cmd+= " --net honeynet"
   cmd+= " --ip " + ip
@@ -64,5 +64,6 @@ for i in range(len(services)):
   f.close()
   print(LIST_IP[i],":",services[i])
   up_ssh(type=services[i], ip=LIST_IP[i])
+
 
 
