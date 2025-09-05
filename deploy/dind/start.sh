@@ -47,15 +47,16 @@ fi
 
 # log folders
 mkdir /app/dind/logs
-mkdir /app/dind/logs/0
-mkdir /app/dind/logs/1
-mkdir /app/dind/logs/2
-mkdir /app/dind/logs/3
-mkdir /app/dind/logs/4
-mkdir /app/dind/logs/5
-mkdir /app/dind/logs/6
-mkdir /app/dind/logs/7
-mkdir /app/dind/logs/8
+mkdir /logs
+mkdir /logs/0
+mkdir /logs/1
+mkdir /logs/2
+mkdir /logs/3
+mkdir /logs/4
+mkdir /logs/5
+mkdir /logs/6
+mkdir /logs/7
+mkdir /logs/8
 echo 0 > /app/dind/.gen
 
 # Build images
