@@ -26,5 +26,6 @@ RUN echo "$SESSION_ID" > /app/session-id
 
 COPY . /app/lobby/
 #COPY analyze /bin/
-RUN chmod +x /app/lobby/start.sh
+RUN chmod 700 /app/lobby/start.sh
 ENTRYPOINT ["/app/lobby/start.sh"]
+
