@@ -45,6 +45,9 @@ fi
 #echo 'PROMPT_COMMAND="history > /logs/command_history.log 2>/dev/null; $PROMPT_COMMAND"' >> /jail/home/nobody1/.bashrc
 #chown nobody1:nobody1 /jail/home/nobody1/.ash_history
 
+# log folders
+mkdir /app/dind/logs -r
+echo 0 > /app/dind/.gen
 
 # Build images
 
@@ -72,3 +75,4 @@ python3 "/app/dind/alarm.py" &
 
 # Keep the container running
 tail -f /dev/null
+
