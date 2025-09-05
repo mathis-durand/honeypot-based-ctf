@@ -31,5 +31,6 @@ RUN echo "$PASS" > /app/pass
 COPY start.sh /app/ssh/
 #COPY analyze /bin/
 COPY banners/ /app/ssh/banners/
-RUN chmod +x /app/ssh/start.sh
+RUN chmod 700 /app/ssh/start.sh
 ENTRYPOINT ["/app/ssh/start.sh"]
+
