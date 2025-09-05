@@ -8,7 +8,7 @@ import time
 
 # Define patterns that indicate suspicious commands (expand this list!)
 suspicious_patterns = [
-    r".*?.*",          # Bypass
+    r".*\?.*",          # Bypass
     r".*base64.*",          # Bypass
     r".*rev.*",          # Bypass
     r".*\\x.*",          # Bypass
@@ -261,5 +261,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
