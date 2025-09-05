@@ -47,7 +47,7 @@ fi
 
 # log folders
 mkdir /app/dind/logs
-mkdir /logs
+#mkdir /logs
 mkdir /logs/0
 mkdir /logs/1
 mkdir /logs/2
