@@ -10,6 +10,7 @@ RUN apt-get update && \
         sudo \
         bash \
         build-essential \
+        nmap \
         && \
     rm -rf /var/lib/apt/lists/*  # Clean up to reduce image size
 
@@ -33,4 +34,5 @@ COPY start.sh /app/ssh/
 COPY banners/ /app/ssh/banners/
 RUN chmod 700 /app/ssh/start.sh
 ENTRYPOINT ["/app/ssh/start.sh"]
+
 
