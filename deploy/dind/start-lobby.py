@@ -6,6 +6,7 @@ def up_lobby():
   """
   cmd = "docker run"
   cmd+= " -v /logs/-1/:/logs"
+  cmd+= " -v /msg/:/alerts"
   cmd+= " -d"
   cmd+= " -h bastion"
   cmd+= " --name lobby_c"
@@ -18,6 +19,7 @@ def up_lobby():
 
 
 up_lobby()
+
 
 
 
