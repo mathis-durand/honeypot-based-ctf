@@ -34,7 +34,7 @@ mkdir -p /home/nobody1/.ssh
 echo 'PermitRootLogin no' >> /etc/ssh/sshd_config # Not root login.
 # Permit password login
 sed -i "s/^#PermitRootLogin.*/PermitRootLogin no/g" /etc/ssh/sshd_config
-sed -i "s/^#PasswordAuthentication.*/PasswordAuthentication yes/g" /etc/ssh/sshd_config
+sed -i "s/^#PasswordAuthentication.*/PasswordAuthentication no/g" /etc/ssh/sshd_config
 sed -i 's/#Port 22/Port 2222/g' /etc/ssh/sshd_config
 
 ssh-keygen -A
@@ -46,3 +46,4 @@ ssh-keygen -A
 
 # Keep the container running
 tail -f /dev/null
+
