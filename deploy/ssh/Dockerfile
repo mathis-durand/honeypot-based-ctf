@@ -10,7 +10,6 @@ RUN apt-get update && \
         sudo \
         bash \
         build-essential \
-        nmap \
         && \
     rm -rf /var/lib/apt/lists/*  # Clean up to reduce image size
 
@@ -32,7 +31,9 @@ RUN echo "$PASS" > /app/pass
 COPY start.sh /app/ssh/
 #COPY analyze /bin/
 COPY banners/ /app/ssh/banners/
+COPY ssh-key-drone.pub /app/ssh/
 RUN chmod 700 /app/ssh/start.sh
 ENTRYPOINT ["/app/ssh/start.sh"]
+
 
 
