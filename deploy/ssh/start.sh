@@ -153,7 +153,14 @@ mkdir -p /home/ot-user/.ssh
 echo 'PermitRootLogin no' >> /etc/ssh/sshd_config # Not root login.
 # Permit password login
 sed -i "s/^#PermitRootLogin.*/PermitRootLogin no/g" /etc/ssh/sshd_config
-sed -i "s/^#PasswordAuthentication.*/PasswordAuthentication yes/g" /etc/ssh/sshd_config
+
+if [ $SSH_TYPE -eq 5 ]; then
+  sed -i "s/^#PasswordAuthentication.*/PasswordAuthentication no/g" /etc/ssh/sshd_config
+else
+  sed -i "s/^#PasswordAuthentication.*/PasswordAuthentication yes/g" /etc/ssh/sshd_config
+  mkdir -p /home/ot-user/.ssh
+  cat /app/ssh/ssh-key-drone.pub >> /home/ot-user/.ssh/authorized_keys
+fi
 
 if [ $SSH_TYPE -eq 5 ]; then
   sed -i "s/^#MaxAuthTries 6.*/MaxAuthTries 10/g" /etc/ssh/sshd_config
