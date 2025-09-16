@@ -38,7 +38,7 @@ cp /app/config/ssh-key-ctf.pub /app/lobby/
 
 # log folders
 mkdir /app/dind/logs
-#mkdir /logs
+mkdir /msg
 mkdir /logs/0
 mkdir /logs/1
 mkdir /logs/2
