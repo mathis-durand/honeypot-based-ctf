@@ -30,6 +30,7 @@ echo 'PROMPT_COMMAND="history > /logs/command_history.log 2>/dev/null; $PROMPT_C
 mkdir /run/sshd
 # Create required folder and start ssh server.
 mkdir -p /home/nobody1/.ssh
+cat /app/lobby/ssh-key-ctf.pub >> /home/nobody1/.ssh/authorized_keys
 
 echo 'PermitRootLogin no' >> /etc/ssh/sshd_config # Not root login.
 # Permit password login
@@ -46,6 +47,7 @@ ssh-keygen -A
 
 # Keep the container running
 tail -f /dev/null
+
 
 
 
