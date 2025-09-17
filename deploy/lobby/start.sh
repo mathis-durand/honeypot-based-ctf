@@ -41,13 +41,14 @@ sed -i 's/#Port 22/Port 2222/g' /etc/ssh/sshd_config
 ssh-keygen -A
 
 # Start SSH service
-python /app/lobby/alarm &
+python3 /app/lobby/alarm &
 /usr/sbin/sshd -D &
 
 
 
 # Keep the container running
 tail -f /dev/null
+
 
 
 
