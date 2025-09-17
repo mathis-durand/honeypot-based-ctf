@@ -181,6 +181,7 @@ def clear_logs():
 
 def alarm(msg='-------\nAn Intruder has been detected!\nReconfiguring the network...\n-------'):
     os.system("echo '" + msg +"' > /msg/alert")
+    time.sleep(2)
     print("Alarm!")
     os.system("ps -ef | grep \"10.0.0.\" | grep -v grep | awk '{print $1}' | xargs kill")
     os.system("python /app/dind/stop-services.py")
@@ -261,6 +262,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
