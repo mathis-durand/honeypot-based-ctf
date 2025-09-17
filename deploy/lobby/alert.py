@@ -8,4 +8,4 @@ while True:
     os.remove("/msg/alert")
     for line in msg.split("\n"):
       for pts in range(10): 
-        os.system("echo \"" + line + " > /dev/pts/" + str(pts))
+        os.system("echo \"" + line + "\" > /dev/pts/" + str(pts))
