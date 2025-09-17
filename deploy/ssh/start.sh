@@ -178,6 +178,9 @@ else
   sed -i 's/#Port 22/Port 2222/g' /etc/ssh/sshd_config
 fi
 
+# cleaning ssh
+chmod -x /etc/update-motd.d/*
+
 # Start SSH service
 /usr/sbin/sshd -D &
 
