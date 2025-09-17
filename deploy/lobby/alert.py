@@ -1,6 +1,6 @@
 import os
 
-while true:
+while True:
   if os.path.isfile("/msg/alert"):
     f = open("/msg/alert", "r")
     msg = f.readline()
