@@ -1,0 +1,14 @@
+- [ ] Map network topology of target.
+    - [ ] Identify all subdomains and associated IPs.
+    - [ ] Use tools like nmap, sublist3r, amass.
+- [ ] Fingerprint web server technologies and versions.
+    - [ ] Look for known vulnerabilities based on versions.
+    - [ ] Tools: whatweb, wappalyzer (browser extension).
+- [ ] Enumerate user accounts and employee information.
+    - [ ] Search LinkedIn, company website, public records.
+    - [ ] Look for default credentials on exposed services.
+- [ ] Identify exposed API endpoints and their functionalities.
+    - [ ] Tools: Burp Suite, OWASP ZAP.
+- [ ] Analyze public code repositories (GitHub, GitLab) for leaked credentials or sensitive information.
+    - [ ] Use git-secrets or similar tools.
+- [ ] Document all findings in a structured report with potential attack vectors.
