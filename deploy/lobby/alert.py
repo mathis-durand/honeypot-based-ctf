@@ -6,8 +6,8 @@ while True:
     msg = f.readlines()
     f.close()
     os.remove("/msg/alert")
-    message = "\\n\\l"
+    message = "\\n"
     for line in msg:
-      message= message + line.split("\n")[0] + "\\n\\l"
+      message= message + line.split("\n")[0] + "\\n"
     for pts in range(10): 
       os.system("printf \"" + message + "\" > /dev/pts/" + str(pts))
