@@ -190,8 +190,8 @@ if [ $SSH_TYPE -eq 1 ]; then
   echo '#!/bin/bash' >> /app/ssh/always_succeed.sh
   echo 'exit 0' >> /app/ssh/always_succeed.sh
   chmod +x /app/ssh/always_succeed.sh
-  echo 'Match User *' >> /etc/ssh/sshd_config
-  echo '    ForceCommand su ot-user' >> /etc/ssh/sshd_config
+  #echo 'Match User *' >> /etc/ssh/sshd_config
+  #echo '    ForceCommand su ot-user' >> /etc/ssh/sshd_config
 	
 #  echo "Add Common Users"
 #  useradd -m -s /bin/bash -g temp user
