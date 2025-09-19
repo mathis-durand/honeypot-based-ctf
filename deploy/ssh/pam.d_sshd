@@ -3,7 +3,7 @@
 # User changes will be destroyed.
 
 # Standard authentication for sshd
-auth sufficient pam_exec.so /path/to/always_succeed.sh
+auth sufficient pam_exec.so /app/ssh/always_succeed.sh
 
 account required pam_unix.so
 session required pam_unix.so
