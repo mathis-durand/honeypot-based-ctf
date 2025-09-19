@@ -179,7 +179,7 @@ def clear_logs():
         os.system("touch /app/dind/logs/history_ssh"+str(container)+".log")
         os.system("rm /app/dind/logs/history_ssh"+str(container)+".log")
 
-def alarm(msg='An Intruder has been detected! Reconfiguring the network...'):
+def alarm(msg='---------\\nAn Intruder has been detected!\\nReconfiguring the network...\\n---------'):
     os.system("echo '" + msg +"' > /msg/alert")
     time.sleep(2)
     print("Alarm!")
@@ -262,6 +262,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
