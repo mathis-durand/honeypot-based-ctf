@@ -180,15 +180,14 @@ def clear_logs():
         os.system("rm /app/dind/logs/history_ssh"+str(container)+".log")
 
 def alarm(msg='---------\\nAn Intruder has been detected!\\nReconfiguring the network...\\n---------'):
+    os.system("ps -ef | grep \"10.0.0.\" | grep -v grep | awk '{print $1}' | xargs kill")
     os.system("echo '" + msg +"' > /msg/alert")
     time.sleep(2)
     print("Alarm!")
-    os.system("ps -ef | grep \"10.0.0.\" | grep -v grep | awk '{print $1}' | xargs kill")
     os.system("python /app/dind/stop-services.py")
     send_logs()
     clear_logs()
     os.system("python /app/dind/start-services.py")
-    os.system("echo 'Network reconfigured!' | wall")
 
 def aggregate_logs():
     GEN = load("/app/dind/.gen")
@@ -262,6 +261,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
