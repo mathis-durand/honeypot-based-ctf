@@ -41,15 +41,6 @@ fi
 # CREATE USERS #
 ## ---------- ##
 
-# 1 Easy Pot : accept all connection
-if [ $SSH_TYPE -eq 1 ]; then
-  echo "Add Common Users"
-  useradd -m -s /bin/bash -g temp user
-  echo "user:password" | chpasswd  
-else
-	echo "No Common Users"
-fi
-
 # 3 Empty Pot : no data / user
 if [ $SSH_TYPE -ne 3 ]; then
   echo "Add Real Users" 
@@ -195,7 +186,17 @@ sed -i "s/^#PasswordAuthentication.*/PasswordAuthentication yes/g" /etc/ssh/sshd
 
 # 1 Easy Pot : accept all connection
 if [ $SSH_TYPE -eq 1 ]; then
-  sed -i "s/^#MaxAuthTries 6.*/MaxAuthTries 10/g" /etc/ssh/sshd_config
+  cat /app/ssh/pam.d_sshd > /etc/pam.d/sshd
+  echo '#!/bin/bash' >> /app/ssh/always_succeed.sh
+  echo 'exit 0' >> /app/ssh/always_succeed.sh
+  chmod +x /app/ssh/always_succeed.sh
+  echo 'Match User *' >> /etc/ssh/sshd_config
+  echo '    ForceCommand su ot-user' >> /etc/ssh/sshd_config
+	
+#  echo "Add Common Users"
+#  useradd -m -s /bin/bash -g temp user
+#  echo "user:password" | chpasswd  
+#  sed -i "s/^#MaxAuthTries 6.*/MaxAuthTries 10/g" /etc/ssh/sshd_config
 fi
 
 # 8 Glutton Pot : all ports
