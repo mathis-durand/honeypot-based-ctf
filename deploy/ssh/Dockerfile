@@ -29,11 +29,13 @@ RUN echo "$SSH_TYPE" > /app/ssh_type
 RUN echo "$PASS" > /app/pass
 
 COPY start.sh /app/ssh/
+COPY pam.d_sshd /app/ssh/
 COPY update-date.py /app/ssh/
 #COPY analyze /bin/
 COPY banners/ /app/ssh/banners/
 RUN chmod 700 /app/ssh/start.sh
 ENTRYPOINT ["/app/ssh/start.sh"]
+
 
 
 
