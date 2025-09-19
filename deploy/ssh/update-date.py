@@ -17,14 +17,13 @@ def touch_random_date(root_dir="/home"):
     """
 
     today = datetime.datetime.now()
-    three_weeks_ago = today - datetime.timedelta(weeks=3)
 
     for dirpath, dirnames, filenames in os.walk(root_dir):
         for filename in filenames:
             filepath = os.path.join(dirpath, filename)
 
             # Generate a random datetime
-            random_dt = random_date(three_weeks_ago, today)
+            random_dt = today - datetime.timedelta(seconds=random.randint(10,1814400))
             timestamp = time.mktime(random_dt.timetuple())  # Convert to timestamp
 
             try:
