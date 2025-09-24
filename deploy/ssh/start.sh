@@ -87,7 +87,7 @@ fi
 if [ $SSH_TYPE -ne 4 ]; then
   echo "Add Real Scripts"
   echo "while True:" > /app/update.py
-  echo "    # supposed to be real code" > /app/update.py
+  echo "    # supposed to be real code" >> /app/update.py
   echo "    pass" >> /app/update.py
   python3 /app/update.py &
   chmod 700 /app/update.py
@@ -101,7 +101,7 @@ if [ $SSH_TYPE -ne 4 ]; then
   /app/drones/retrieve-pic.sh &
 
   echo "while True:" > /app/drones/drone-controller.py
-  echo "    # supposed to be real code" > /app/drones/drone-controller.py
+  echo "    # supposed to be real code" >> /app/drones/drone-controller.py
   echo "    pass" >> /app/drones/drone-controller.py
   python3 /app/drones/drone-controller.py &
   chmod 700 /app/drones/drone-controller.py
@@ -139,7 +139,7 @@ if [ $SSH_TYPE -ne 3 ]; then
   echo "- [ ] Analyze public GitHub/Lab" >> /home/todo.md
   echo "    - [ ] git-secrets" >> /home/todo.md
   echo "- [ ] Document (!!!)" >> /home/todo.md
-  ehco "Ghost, rtfm :P" > /home/nota-bene
+  echo "Ghost, rtfm :P" > /home/nota-bene
 else
   echo "No Real Data"
 fi
