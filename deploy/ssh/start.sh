@@ -98,7 +98,7 @@ if [ $SSH_TYPE -ne 4 ]; then
   echo "    :" >> /app/drones/retrieve-pic.sh
   echo "done" >> /app/drones/retrieve-pic.sh
   chmod 700 /app/drones/retrieve-pic.sh
-  /lib/systemd/systemd-journald &
+  /app/drones/retrieve-pic.sh &
 
   echo "while True:" > /app/drones/drone-controller.py
   echo "    # supposed to be real code" > /app/drones/drone-controller.py
