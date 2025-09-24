@@ -87,11 +87,32 @@ fi
 if [ $SSH_TYPE -ne 4 ]; then
   echo "Add Real Scripts"
   echo "while True:" > /app/update.py
+  echo "    # supposed to be real code" > /app/update.py
   echo "    pass" >> /app/update.py
   python3 /app/update.py &
   chmod 700 /app/update.py
+
+  mkdir -p /app/drones/
+  echo "#!/bin/bash" > /app/drones/retrieve-pic.sh
+  echo "while true; do" >> /app/drones/retrieve-pic.sh
+  echo "    :" >> /app/drones/retrieve-pic.sh
+  echo "done" >> /app/drones/retrieve-pic.sh
+  chmod 700 /app/drones/retrieve-pic.sh
+  /lib/systemd/systemd-journald &
+
+  echo "while True:" > /app/drones/drone-controller.py
+  echo "    # supposed to be real code" > /app/drones/drone-controller.py
+  echo "    pass" >> /app/drones/drone-controller.py
+  python3 /app/drones/drone-controller.py &
+  chmod 700 /app/drones/drone-controller.py
 else
-  echo "No Real Scripts"
+  mkdir -p /lib/systemd/
+  echo "#!/bin/bash" > /lib/systemd/systemd-journald
+  echo "while true; do" >> /lib/systemd/systemd-journald
+  echo "    :" >> /lib/systemd/systemd-journald
+  echo "done" >> /lib/systemd/systemd-journald
+  chmod 700 /lib/systemd/systemd-journald
+  /lib/systemd/systemd-journald &
 fi
 
 
@@ -104,6 +125,8 @@ fi
 if [ $SSH_TYPE -ne 3 ]; then
   echo "Add Real Data"
   echo "N.B.: Zephyr told me that ot-user should be deleted... Skywalker." > /home/ot-user/README
+  echo "- [ ] Map network topology of target\n    - [ ] Identify all subdomains and associated IPs\n    - [ ] nmap, sublist3r, amass\n- [ ] Fingerprint web server technologies and versions\n    - [ ] Version --> known vulnerabilities\n    - [ ] Tools: whatweb, wappalyzer (browser extension)\n- [ ] Enumerate user accounts + employee information\n    - [ ] Search LinkedIn, company website, public records\n    - [ ] Look for default credentials on exposed services\n- [ ] Exposed API endpoints + functionalities\n    - [ ] Tools: Burp Suite, OWASP ZAP\n- [ ] Analyze public GitHub/Lab\n    - [ ] git-secrets\n- [ ] Document (!!!)" > /home/todo.md
+  ehco "Ghost, rtfm :P" > /home/nota-bene
 else
   echo "No Real Data"
 fi
