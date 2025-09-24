@@ -125,7 +125,20 @@ fi
 if [ $SSH_TYPE -ne 3 ]; then
   echo "Add Real Data"
   echo "N.B.: Zephyr told me that ot-user should be deleted... Skywalker." > /home/ot-user/README
-  echo "- [ ] Map network topology of target\n    - [ ] Identify all subdomains and associated IPs\n    - [ ] nmap, sublist3r, amass\n- [ ] Fingerprint web server technologies and versions\n    - [ ] Version --> known vulnerabilities\n    - [ ] Tools: whatweb, wappalyzer (browser extension)\n- [ ] Enumerate user accounts + employee information\n    - [ ] Search LinkedIn, company website, public records\n    - [ ] Look for default credentials on exposed services\n- [ ] Exposed API endpoints + functionalities\n    - [ ] Tools: Burp Suite, OWASP ZAP\n- [ ] Analyze public GitHub/Lab\n    - [ ] git-secrets\n- [ ] Document (!!!)" > /home/todo.md
+  echo "- [ ] Map network topology of target" > /home/todo.md
+  echo "    - [ ] Identify all subdomains and associated IPs" >> /home/todo.md
+  echo "    - [ ] nmap, sublist3r, amass" >> /home/todo.md
+  echo "- [ ] Fingerprint web server technologies and versions" >> /home/todo.md
+  echo "    - [ ] Version --> known vulnerabilities" >> /home/todo.md
+  echo "    - [ ] Tools: whatweb, wappalyzer (browser extension)" >> /home/todo.md
+  echo "- [ ] Enumerate user accounts + employee information" >> /home/todo.md
+  echo "    - [ ] Search LinkedIn, company website, public records" >> /home/todo.md
+  echo "    - [ ] Look for default credentials on exposed services" >> /home/todo.md
+  echo "- [ ] Exposed API endpoints + functionalities" >> /home/todo.md
+  echo "    - [ ] Tools: Burp Suite, OWASP ZAP" >> /home/todo.md
+  echo "- [ ] Analyze public GitHub/Lab" >> /home/todo.md
+  echo "    - [ ] git-secrets" >> /home/todo.md
+  echo "- [ ] Document (!!!)" >> /home/todo.md
   ehco "Ghost, rtfm :P" > /home/nota-bene
 else
   echo "No Real Data"
