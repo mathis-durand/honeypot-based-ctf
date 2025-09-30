@@ -201,7 +201,7 @@ def aggregate_logs():
                 log = log[7:]
                 log.replace("\n","\\n")
                 #time = re.finditer("\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}", log)[0].group()
-                time = log.split(" ")[0] + " " + log.split(" ")[1] + ";"
+                time = log.split(" ")[0] + " " + log.split(" ")[1]
                 command = ""
                 for arg in log.split(" ")[2:]:
                     command += arg + " "
@@ -262,6 +262,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
