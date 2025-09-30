@@ -25,7 +25,7 @@ suspicious_patterns = [
     #r"ps aux",          # Examining running processes
     r".*/dev/null*", # Redirection to hide output (can be used maliciously)
     r".*install.*",  # Installing packages (potentially malicious)
-    #r".*apt install.*",  # Modern apt install command.
+    r".*apt.*",  # Modern apt install command.
     r".*dpkg.*",         # Installing .deb packages (can install malware)
     r".*addgroup.*",      # Adding a group. Usually harmless, but can be part of an attack.
     r".*adduser.*",       # Adding a user. Similar to addgroup.
@@ -43,7 +43,7 @@ suspicious_patterns = [
     r".*ufw.*",           # Uncomplicated Firewall control (Ubuntu default).
     r".*netstat.*",         # Network connections.  Check for suspicious connections.
     r".*tcpdump.*",        # Packet capture (could be used for sniffing)
-    #r".*wget .*--spider.*", # Spidering, potentially malicious
+    r".*wget.*", # Spidering, potentially malicious
     r".*screen.*",         # Screen session (can be used to hide activity)
     r".*tmux.*",           # Tmux session (similar to screen)
     r".*history.*",    # Clear shell history (attempting to hide activity)
@@ -198,14 +198,15 @@ def aggregate_logs():
             log_file = open("/app/dind/logs/history_ssh"+str(container)+".log", "r")
             logs = log_file.readlines()
             for log in logs:
-                docker_id = str(DID) + ";"
-                generation = str(GEN) + ";"
-                time = log.split(" ")[6] + " " + log.split(" ")[7] + ";"
+                log = log[7:]
+                log.replace("\n","\\n")
+                #time = re.finditer("\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}", log)[0].group()
+                time = log.split(" ")[0] + " " + log.split(" ")[1] + ";"
                 command = ""
-                for arg in log.split(" ")[8:]:
+                for arg in log.split(" ")[2:]:
                     command += arg + " "
                 command= command[:-1]
-                agg_log_file.write(docker_id + generation + time + str(container) + ";" + command)
+                agg_log_file.write(str(DID) + ";" + str(GEN) + ";" + time + ";" + str(container) + ";" + command)
             log_file.close()        
     agg_log_file.close()
     send_logs()
@@ -261,6 +262,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
