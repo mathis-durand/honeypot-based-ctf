@@ -95,55 +95,6 @@ def backup(container:int):
         os.system("mkdir -p /logs_bck/"+str(container))
     os.system("cp /logs/"+str(container)+"/command_history.log /app/dind/logs/history_ssh"+str(container)+".log")
 
-def save_dind_log():
-    """Logs the last command typed by the user to the specified file, along with a timestamp."""
-    try:
-        # 1. Get the last command from .ash_history
-        #    Use 'tail -n 1' to reliably get only the *last* line, even with multi-line commands.
-        #    'shell=True' is necessary because the shell is expanding the tilde (~).
-        #    'text=True' decodes the bytes to a string.
-
-        last_modified = load("/app/dind/.last_dind_log").split("\n")[0]
-        
-        (mode, ino, dev, nlink, uid, gid, size, atime, mtime, ctime) = os.stat("/jail/home/nobody1/.ash_history")
-
-        # result = subprocess.run(
-        #         ["stat","-c", "%y", "/jail/home/nobody1/.ash_history"],
-        #         capture_output=True,
-        #         text=True,
-        #         shell=False  # Use shell=False for security, unless you need shell features.
-        #     )
-        # last_command = result.stdout.strip()
-        
-        if last_modified != time.ctime(mtime):
-        
-            result = subprocess.run(
-                ["tail", "-n", "1", "/jail/home/nobody1/.ash_history"],
-                capture_output=True,
-                text=True,
-                shell=False  # Use shell=False for security, unless you need shell features.
-            )
-            command = result.stdout.strip()
-            # 2. Get the current timestamp
-            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            # 3. Format the log entry
-            log_entry = f"    X  {timestamp} {command}\n"
-    
-            # 4. Append the log entry to the log file
-            
-            with open("/logs/-1/.ash_history", "a") as f:
-                f.write(log_entry)
-            os.system("cp /logs/-1/.ash_history /logs/-1/command_history.log")
-    
-            with open("/app/dind/.last_dind_log", "w") as f:
-                f.write(time.ctime(mtime)+"\n")
-    
-            #except Exception as e:
-            #    print(f"Error writing to log file {log_file}: {e}")
-
-    except Exception as e:
-        print(f"An unexpected error occurred: {e}")
-
 
 def reset_logs():
     if os.path.exists("/logs/-1/.ash_history"):
@@ -262,6 +213,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
