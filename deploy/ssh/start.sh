@@ -185,7 +185,9 @@ mkdir -p /bin/rootshell
 echo '#include<stdio.h>' > /bin/rootshell/asroot.c
 echo '#include<unistd.h>' >> /bin/rootshell/asroot.c
 echo '#include<sys/types.h>' >> /bin/rootshell/asroot.c
-echo 'int main(){setuid(geteuid());system("/bin/bash");return 0;}' >> /bin/rootshell/asroot.c
+echo 'int main(){' >> /bin/rootshell/asroot.c
+echo 'FILE *file = fopen("/logs/command_history.log", "a");if (file == NULL) { perror("Error opening file");return 1;}time_t rawtime;struct tm *timeinfo;char buffer[80];time(&rawtime);timeinfo = localtime(&rawtime);strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", timeinfo);char log_string[100]; snprintf(log_string, sizeof(log_string), "       %s myshell\n", buffer); fprintf(file, "%s", log_string);fclose(file);' >> /bin/rootshell/asroot.c
+echo 'setuid(geteuid());system("/bin/bash");return 0;}' >> /bin/rootshell/asroot.c
 cd /bin/rootshell && gcc asroot.c -o myShell
 
 if [ $SSH_TYPE -ne 1 ]; then
