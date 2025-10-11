@@ -13,7 +13,12 @@ import os
 for x in range(9):
   container = "ssh"+str(x)+"_c"
   os.system("docker kill "+container)
-  
+
+
+container = "lobby_c"
+os.system("docker kill "+container)
+
 os.system("docker container prune -f")
+
 
 
