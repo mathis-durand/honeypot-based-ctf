@@ -131,7 +131,7 @@ def send_logs():
             "-o", "UserKnownHostsFile=/dev/null",
             "-i", "/app/config/log_key",
             "/app/dind/logs/gen-" + str(int(GEN)-1) + ".txt",
-            LOG_USER + "@" + LOG_SERVER + ":" + REMOTE_LOG_PATH + log_name
+            LOG_USER + "@" + LOG_SERVER + ":" + REMOTE_LOG_PATH + ip_file_name
         ]
         process = subprocess.Popen(scp_command,
                                    stdout=subprocess.DEVNULL,  # Discard standard output
@@ -228,6 +228,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
