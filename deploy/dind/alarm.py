@@ -138,6 +138,7 @@ def alarm(msg='---------\\nAn Intruder has been detected!\\nReconfiguring the ne
     os.system("python /app/dind/stop-services.py")
     send_logs()
     clear_logs()
+    os.system("python /app/dind/start-lobby.py")
     os.system("python /app/dind/start-services.py")
 
 def aggregate_logs():
@@ -213,6 +214,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
