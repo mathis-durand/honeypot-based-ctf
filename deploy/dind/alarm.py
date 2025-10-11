@@ -122,6 +122,20 @@ def send_logs():
         process = subprocess.Popen(scp_command,
                                    stdout=subprocess.DEVNULL,  # Discard standard output
                                    stderr=subprocess.DEVNULL)  # Discard standard error
+        
+        GEN = load("/app/dind/.gen")
+        ip_file_name = "gen_" + DID + "_" + GEN + ".ip"
+        scp_command = [
+            "scp",
+            "-o", "StrictHostKeyChecking=no",
+            "-o", "UserKnownHostsFile=/dev/null",
+            "-i", "/app/config/log_key",
+            "/app/dind/logs/gen-" + GEN + ".txt",
+            LOG_USER + "@" + LOG_SERVER + ":" + REMOTE_LOG_PATH + log_name
+        ]
+        process = subprocess.Popen(scp_command,
+                                   stdout=subprocess.DEVNULL,  # Discard standard output
+                                   stderr=subprocess.DEVNULL)  # Discard standard error
     except Exception as e:
         print(str(e))
 
@@ -214,6 +228,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
