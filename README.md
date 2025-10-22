@@ -35,5 +35,6 @@ sudo docker exec -it challenge /bin/bash
 Use `ssh` to connect to the Docker container port.
 
 ```
-nobody1 : password
+ssh -p {PORT} -i ./ssh-key-ctf nobody1@ip
 ```
+
