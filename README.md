@@ -30,6 +30,13 @@ Connect as root to the challenge (debug)
 sudo docker exec -it challenge /bin/bash
 ```
 
+Troubleshoot "xxx.sh" not found
+```sh
+dos2unix ./deploy/app/start.sh
+dos2unix ./deploy/dind/start.sh
+dos2unix ./deploy/lobby/start.sh
+```
+
 # Player guide
 
 Use `ssh` to connect to the Docker container port.
@@ -37,4 +44,5 @@ Use `ssh` to connect to the Docker container port.
 ```
 ssh -p {PORT} -i ./ssh-key-ctf nobody1@ip
 ```
+
 
