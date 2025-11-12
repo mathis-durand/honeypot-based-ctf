@@ -150,7 +150,7 @@ def alarm(msg='An Intruder has been detected! Reconfiguring the network...'):
     remaining_attempts = int(load("/app/dind/.remaining_attempts")) - 1
     print("Remaining attaempts: "+ str(remaining_attempts))
     f = open("/app/dind/.remaining_attempts","w")
-    f.write(str(remaining_attempts))
+    f.write(str(remaining_attempts)+"\n")
     f.close()
     os.system("ps -ef | grep \"10.0.0.\" | grep -v grep | awk '{print $1}' | xargs kill")
     print("Alarm!")
@@ -235,6 +235,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
