@@ -49,6 +49,7 @@ mkdir /logs/6
 mkdir /logs/7
 mkdir /logs/8
 echo 0 > /app/dind/.gen
+cp /app/config/max_attempts /app/dind/.attemps_remaining
 
 # Build images
 
