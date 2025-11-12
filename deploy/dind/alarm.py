@@ -147,7 +147,8 @@ def clear_logs():
 def alarm(msg='An Intruder has been detected! Reconfiguring the network...'):
     os.system("echo '" + msg +"' > /msg/alert")
     time.sleep(2)
-    remaining_attempts = int(load("/app/dind/.remaining_attempts")) - 1
+    remaining_attempts = load("/app/dind/.remaining_attempts")
+    print(remaining_attempts)
     f = open("/app/dind/.remaining_attempts","w")
     f.write(str(remaining_attempts))
     f.close()
@@ -234,6 +235,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
