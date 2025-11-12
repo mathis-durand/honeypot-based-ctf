@@ -144,11 +144,13 @@ def clear_logs():
         os.system("touch /app/dind/logs/history_ssh"+str(container)+".log")
         os.system("rm /app/dind/logs/history_ssh"+str(container)+".log")
 
-def alarm(msg='An Intruder has been detected! Reconfiguring the network...'):
+def alarm(msg='An Intruder has been detected! Reconfiguring the network...', show_attempts=True):
+    remaining_attempts = int(load("/app/dind/.remaining_attempts")) - 1
+    print("Remaining attempts: "+ str(remaining_attempts))
+    if show_attempts:
+        msg =+ "\n\lRemaining attempts: "+ str(remaining_attempts)
     os.system("echo '" + msg +"' > /msg/alert")
     time.sleep(2)
-    remaining_attempts = int(load("/app/dind/.remaining_attempts")) - 1
-    print("Remaining attaempts: "+ str(remaining_attempts))
     f = open("/app/dind/.remaining_attempts","w")
     f.write(str(remaining_attempts)+"\n")
     f.close()
@@ -235,6 +237,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
