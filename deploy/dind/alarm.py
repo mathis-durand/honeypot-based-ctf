@@ -160,7 +160,7 @@ def alarm(msg='\\An Intruder has been detected!\\nReconfiguring the network...\\
     send_logs()
     clear_logs()
     remaining_attempts = int(load("/app/dind/.remaining_attempts"))
-    if remaining_attempts > -1:
+    if remaining_attempts > 0:
         os.system("python /app/dind/start-lobby.py")
         os.system("python /app/dind/start-services.py")
 
@@ -237,6 +237,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
