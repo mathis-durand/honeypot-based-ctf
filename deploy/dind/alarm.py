@@ -156,8 +156,10 @@ def alarm(msg='An Intruder has been detected! Reconfiguring the network...'):
     os.system("python /app/dind/stop-services.py")
     send_logs()
     clear_logs()
-    os.system("python /app/dind/start-lobby.py")
-    os.system("python /app/dind/start-services.py")
+    remaining_attempts = int(load("/app/dind/.remaining_attempts"))
+    if remaining_attempts > -1:
+        os.system("python /app/dind/start-lobby.py")
+        os.system("python /app/dind/start-services.py")
 
 def aggregate_logs():
     GEN = load("/app/dind/.gen")
@@ -232,6 +234,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
