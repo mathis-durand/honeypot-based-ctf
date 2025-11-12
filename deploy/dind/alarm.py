@@ -148,7 +148,7 @@ def alarm(msg='\\An Intruder has been detected!\\nReconfiguring the network...\\
     remaining_attempts = int(load("/app/dind/.remaining_attempts")) - 1
     print("Remaining attempts: "+ str(remaining_attempts))
     if show_attempts:
-        msg =+ "\\nRemaining attempts: "+ str(remaining_attempts)+"\\n"
+        msg = msg + "\\nRemaining attempts: "+ str(remaining_attempts)+"\\n"
     os.system("echo '" + msg +"' > /msg/alert")
     time.sleep(2)
     f = open("/app/dind/.remaining_attempts","w")
@@ -237,6 +237,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
