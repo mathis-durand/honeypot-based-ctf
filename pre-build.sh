@@ -8,6 +8,7 @@ dos2unix deploy/dind/start.sh
 dos2unix deploy/lobby/start.sh
 
 cp deploy/config/ssh-key-ctf.pub deploy/lobby/ssh-key-ctf.pub
+cp deploy/config/max_attempts deploy/dind/.remaining_attempts
 
 echo "Building images"
 
