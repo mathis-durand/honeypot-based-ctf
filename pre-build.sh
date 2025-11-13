@@ -22,23 +22,23 @@ docker build --build-arg SSH_TYPE=8 --build-arg FLAG="$FLAG" --build-arg PASS="$
 
 echo "Saving images"
 echo "Images Lobby"
-docker save lobby -o deploy/lobby/lobby.tar
+docker save lobby -o deploy/images/lobby.tar
 echo "Images SSH0"
-docker save ssh0 -o deploy/ssh/ssh0.tar
+docker save ssh0 -o deploy/images/ssh0.tar
 echo "Images SSH1"
-docker save ssh1 -o deploy/ssh/ssh1.tar
+docker save ssh1 -o deploy/images/ssh1.tar
 echo "Images SSH2"
-docker save ssh2 -o deploy/ssh/ssh2.tar
+docker save ssh2 -o deploy/images/ssh2.tar
 echo "Images SSH3"
-docker save ssh3 -o deploy/ssh/ssh3.tar
+docker save ssh3 -o deploy/images/ssh3.tar
 echo "Images SSH4"
-docker save ssh4 -o deploy/ssh/ssh4.tar
+docker save ssh4 -o deploy/images/ssh4.tar
 echo "Images SSH5"
-docker save ssh5 -o deploy/ssh/ssh5.tar
+docker save ssh5 -o deploy/images/ssh5.tar
 echo "Images SSH6"
-docker save ssh6 -o deploy/ssh/ssh6.tar
+docker save ssh6 -o deploy/images/ssh6.tar
 echo "Images SSH7"
-docker save ssh7 -o deploy/ssh/ssh7.tar
+docker save ssh7 -o deploy/images/ssh7.tar
 echo "Images SSH8"
-docker save ssh8 -o deploy/ssh/ssh8.tar
+docker save ssh8 -o deploy/images/ssh8.tar
 
