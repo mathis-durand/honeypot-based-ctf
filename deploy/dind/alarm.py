@@ -144,16 +144,25 @@ def clear_logs():
         os.system("touch /app/dind/logs/history_ssh"+str(container)+".log")
         os.system("rm /app/dind/logs/history_ssh"+str(container)+".log")
 
-def alarm(msg='An Intruder has been detected! Reconfiguring the network...'):
+def alarm(msg='\\An Intruder has been detected!\\nReconfiguring the network...\\n', show_attempts=True):
+    remaining_attempts = int(load("/app/dind/.remaining_attempts")) - 1
+    print("Remaining attempts: "+ str(remaining_attempts))
+    if show_attempts:
+        msg = msg + "\\nRemaining attempts: "+ str(remaining_attempts)+"\\n"
     os.system("echo '" + msg +"' > /msg/alert")
     time.sleep(2)
+    f = open("/app/dind/.remaining_attempts","w")
+    f.write(str(remaining_attempts)+"\n")
+    f.close()
     os.system("ps -ef | grep \"10.0.0.\" | grep -v grep | awk '{print $1}' | xargs kill")
     print("Alarm!")
     os.system("python /app/dind/stop-services.py")
     send_logs()
     clear_logs()
-    os.system("python /app/dind/start-lobby.py")
-    os.system("python /app/dind/start-services.py")
+    remaining_attempts = int(load("/app/dind/.remaining_attempts"))
+    if remaining_attempts > 0:
+        os.system("python /app/dind/start-lobby.py")
+        os.system("python /app/dind/start-services.py")
 
 def aggregate_logs():
     GEN = load("/app/dind/.gen")
@@ -228,6 +237,19 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
