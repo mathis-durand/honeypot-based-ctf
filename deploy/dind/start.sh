@@ -18,16 +18,16 @@ docker network create --subnet=10.0.0.0/8 --gateway=10.0.0.1 honeynet
 
 # Build images
 
-docker load < /app/lobby/lobby.tar
-docker load < /app/ssh/ssh0.tar
-docker load < /app/ssh/ssh1.tar
-docker load < /app/ssh/ssh2.tar
-docker load < /app/ssh/ssh3.tar
-docker load < /app/ssh/ssh4.tar
-docker load < /app/ssh/ssh5.tar
-docker load < /app/ssh/ssh6.tar
-docker load < /app/ssh/ssh7.tar
-docker load < /app/ssh/ssh8.tar
+docker load < /app/images/lobby.tar
+docker load < /app/images/ssh0.tar
+docker load < /app/images/ssh1.tar
+docker load < /app/images/ssh2.tar
+docker load < /app/images/ssh3.tar
+docker load < /app/images/ssh4.tar
+docker load < /app/images/ssh5.tar
+docker load < /app/images/ssh6.tar
+docker load < /app/images/ssh7.tar
+docker load < /app/images/ssh8.tar
 
 #docker build --build-arg SESSION_ID="$sessionID" -t lobby /app/lobby
 #docker build -t ssh_image /app/ssh
