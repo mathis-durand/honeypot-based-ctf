@@ -7,6 +7,8 @@ dos2unix deploy/ssh/start.sh
 dos2unix deploy/dind/start.sh
 dos2unix deploy/lobby/start.sh
 
+cp deploy/config/ssh-key-ctf.pub deploy/lobby/ssh-key-ctf.pub
+
 echo "Building images"
 
 docker build --build-arg SESSION_ID="$sessionID" -t lobby -f deploy/Dockerfile_lobby deploy/
