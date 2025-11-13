@@ -25,11 +25,12 @@ RUN mkdir -p /app/lobby/
 
 RUN echo "$SESSION_ID" > /app/session-id
 
-COPY lobby/ /app/lobby/
+COPY deploy/lobby/ /app/lobby/
 
 #COPY analyze /bin/
 RUN chmod 700 /app/lobby/start.sh
 ENTRYPOINT ["/app/lobby/start.sh"]
+
 
 
 
