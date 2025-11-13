@@ -23,8 +23,8 @@ RUN mkdir /logs
 RUN mkdir /logs/-1 /logs/0 /logs/1 /logs/2 /logs/3 /logs/4 /logs/5  /logs/6 /logs/7 /logs/8
 RUN echo 0 > /app/dind/.gen
 
-COPY ./ssh ./ssh
-COPY ./lobby ./lobby
+#COPY ./ssh ./ssh
+#COPY ./lobby ./lobby
 
 ARG SSH_USER='nobody1'
 ARG SSH_PASS='password'
@@ -41,6 +41,7 @@ EXPOSE 2222
 
 # Run the build and run script, and then the log analyzer in the background
 CMD ["/app/dind/start.sh"]
+
 
 
 
