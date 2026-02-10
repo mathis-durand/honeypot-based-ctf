@@ -12,6 +12,9 @@ Good luck, and be cautious!
 
 The challenge may take a few minutes to set up.
 
+# Challenge structure
+
+![Challenge structure](https://raw.githubusercontent.com/mathis-durand/honeypot-based-ctf/refs/heads/main/images/CTF-ECW-Honeypot%20-%20detailed.drawio.png)
 
 # Challenge host guide
 
@@ -44,5 +47,6 @@ Use `ssh` to connect to the Docker container port.
 ```
 ssh -p {PORT} -i ./ssh-key-ctf nobody1@ip
 ```
+
 
 
